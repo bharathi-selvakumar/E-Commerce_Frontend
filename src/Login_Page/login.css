@@ -1,0 +1,21 @@
+
+.main-box {
+    justify-content: center;
+    align-items: center;
+    width: 510px;
+    padding: 30px;
+    height: 450px;
+    background: white;
+    border-radius: 8px; 
+    margin:120px 0px 0px 120px
+    
+}
+
+.login-background{
+    background-image: url(../images/image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 20px;
+    height: 88vh;
+    padding: 20px;
+}
