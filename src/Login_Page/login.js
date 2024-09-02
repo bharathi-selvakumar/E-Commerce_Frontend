@@ -58,8 +58,6 @@ const navi=useNavigate();
         console.log(res.data)
         navi('/'); 
         window.location.reload();
-
-        
        }
        catch(error){
         // setError(error)

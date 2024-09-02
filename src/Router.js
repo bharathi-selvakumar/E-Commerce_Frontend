@@ -8,7 +8,11 @@ import { useEffect,useState } from 'react';
 import Whishlist from "./Pages/whishlist";
 import Profile from "./Pages/profile";
 import Dashboard from "./Pages/dashboard";
-import MobileCollections from "./Pages/Mobiles/MobileCollection";
+import MobileCollections from "./Pages/AllElectronicProduct/Mobiles/MobileCollection";
+import Iphone from "./Pages/AllElectronicProduct/Mobiles/All_MobileBrands";
+import ProductList from "./Navbar/ProductListBar";
+// import Mobile_Axios from "./Pages/AllElectronicProduct/Mobiles/Mobile_Axios";
+import Mobile_Iphone from "./Pages/AllElectronicProduct/Mobiles/Mobile_Perticular";
 
 const theme = createTheme({
   typography: {
@@ -29,16 +33,19 @@ const Router=()=>{
  
     return(
         <>
+        
         <ThemeProvider theme={theme}>
         <BrowserRouter>
         {/* {isLoggedIn ? (  <Navbar_User/> ) : (<Navbar/>)} */}
-                < Routes>
+                < Routes >
                         <Route path="/" element={<Dashboard/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/sign_up" element={<Sign_up/>}/>
                         <Route path="/wishlist" element={<Whishlist/>}/>
                         <Route path="/profile" element={<Profile/>}/>
                         <Route path="/mobileCollections" element={<MobileCollections/>}/>
+                        <Route path="/Brand_collections/:BrandName" element={<Iphone/>}/>
+                        <Route path="/:decodedBrandName/:name" element={<Mobile_Iphone/>} />
                 </Routes> 
         </BrowserRouter>
         </ThemeProvider>

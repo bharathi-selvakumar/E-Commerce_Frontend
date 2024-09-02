@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./mobile.css";
 import { Carousel } from "antd";
 import iphone_brand from "./images/iphone__interface.png";
@@ -8,7 +8,9 @@ import logo_vivo from "./images/vivo.png";
 import logo_samsung from "./images/samsung.png";
 import { Card } from "antd";
 import { Grid, Container, useTheme, useMediaQuery } from "@mui/material";
-
+import BrandData from "./All_MobileBrands"
+import Iphone from "./All_MobileBrands";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 const contentStyle = {
@@ -41,6 +43,8 @@ const Carousel_image = [
     alt: "carousel image 1",
   },
 ];
+
+const BrandNames=["Apple","vivo","samsung","redmi","realmi","oppo","moto"]
 
 const MobileCollections = () => {
   const theme = useTheme();
@@ -113,6 +117,18 @@ const MobileCollections = () => {
     }
   };
 
+
+  const OppoMl=()=>{
+    if (isSmallScreen) {
+      return "0px";
+    } else if (isMediumScreen) {
+      return "20px";
+    } else if (isLargeScreen) {
+      return "0px";
+    } else if (isXLargeScreen) {
+      return "30px";
+    }
+  }
   const MotoAndPoco_Style = () => {
     if (isSmallScreen) {
       return {
@@ -163,7 +179,7 @@ const MobileCollections = () => {
     } else if (isLargeScreen) {
       return "0px";
     } else if (isXLargeScreen) {
-      return "-120px";
+      return "-90px";
     }
   };
 
@@ -187,13 +203,21 @@ const MobileCollections = () => {
     } else if (isLargeScreen) {
       return { height: "400px" };
     } else if (isXLargeScreen) {
-      return { height: "400px" };
+      return { height: "350px" };
     }
   };
 
+  // const[dataBrand,setDataBrand]=useState()
+
+  // const handlebrandname=(brand)=>{
+  //     setDataBrand(brand)
+  //     console.log(brand)
+  // }
+  
   return (
     <>
-      <Container>
+      <div className="main-mobileCollections">
+      <Container >
         <Grid container spacing={2}>
           <Grid
             item
@@ -203,8 +227,8 @@ const MobileCollections = () => {
             <div
               style={{
                 position: "relative",
-                margin: "20px -6%",
-                width: "110%",
+                margin: "20px -1%",
+                width: "100%",
                 padding: "10px",
               }}
             >
@@ -243,7 +267,8 @@ const MobileCollections = () => {
           sx={{}}
         >
           <Grid item xs={6} sm={6} md={4} lg={3} sx={{ padding: "-20px" }}>
-            <a href="/iphone_collections">
+          {/* <BrandData dataApple={dataBrand}/> */}
+            <Link to={`/Brand_collections/${BrandNames[0]}`} >
               <Card
                 hoverable
                 style={{ width: "auto", textAlign: "center", height: "280px" }}
@@ -255,6 +280,7 @@ const MobileCollections = () => {
                   />
                 }
                 className="brands Card-hover"
+                // onClick={()=>handlebrandname("iphone")}
               >
                 <img
                   src="https://i.pinimg.com/originals/2f/5a/8c/2f5a8c55d6f34094fe44b7d9125ee074.png"
@@ -263,11 +289,11 @@ const MobileCollections = () => {
                   style={{ position: "relative", bottom: -10, left: -5 }}
                 />
               </Card>
-            </a>
+            </Link>
           </Grid>
 
           <Grid item xs={6} sm={6} md={4} lg={3}>
-            <a href="/vivo_collections">
+            <Link to={`/Brand_collections/${BrandNames[1]}`}>
               <Card
                 hoverable
                 style={{
@@ -285,7 +311,7 @@ const MobileCollections = () => {
                   style={{ position: "relative", bottom: 30 }}
                 />
               </Card>
-            </a>
+            </Link>
           </Grid>
 
           <Grid
@@ -294,7 +320,7 @@ const MobileCollections = () => {
             sm={6}
             md={4}
             lg={3}
-            sx={{ mt: { md: "0px", xs: "-10px", lg: "0px", sm: "0px" } }}
+            sx={{ ml: { md: "0px", xs: "-10px", lg: "0px", sm: "0px" } }}
           >
             <a href="/vivo_collections">
               <Card
@@ -447,7 +473,7 @@ const MobileCollections = () => {
             md={6}
             lg={6}
             sm={6}
-            sx={{ mt: { xs: "10px", lg: "10px", sm: "10px", md: "10px" } }}
+            sx={{ mt: { xs: "10px", lg: "22px", sm: "10px", md: "10px" },padding:{lg:"20px",xs:"0px ",sm:"0px",md:"0px"} }}
           >
             <a href="oppo_collections">
               <Card
@@ -457,6 +483,7 @@ const MobileCollections = () => {
                   textAlign: "center",
                   position: "relative",
                   height: "",
+                  marginLeft:OppoMl()
                 }}
                 className="brands Card-hover"
                 cover={
@@ -555,7 +582,7 @@ const MobileCollections = () => {
             </a>
           </Grid>
 
-          <Grid item xs={12} md={6} lg={5.8} sm={6} style={infinix_MT()}>
+          <Grid item xs={12} md={6} lg={6} sm={6} style={infinix_MT()}>
             <a href="realme_collections">
               <Card
                 hoverable
@@ -584,6 +611,7 @@ const MobileCollections = () => {
           </Grid>
         </Grid>
       </Container>
+      </div>
     </>
   );
 };
